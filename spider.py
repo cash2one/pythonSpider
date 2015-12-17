@@ -1,2 +1,5 @@
 import requests
-print "Hello"
+def crawler(url):
+	res = requests.get(url)
+	html = res.text
+	
