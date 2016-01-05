@@ -52,9 +52,10 @@ def get_picurl(pic_content):
     picurl = []
     domain = "http://www.tuigirl.com"
     
-    pattern = re.compile(r'src="(.*?)"', pic_content)
+    pattern = re.compile(r'src="(.*?)"')
+    match = pattern.findall(pic_content)
     
-    for pic in pattern:
+    for pic in match:
         purl = domain + pic
         picurl.append(purl)
     else:
