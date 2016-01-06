@@ -7,15 +7,23 @@ import requests
 
 page_url = []
 girl_url = []
+
 n = 0
+
 def tuigirl():
     pageurl = get_pageurl()
     for l in pageurl:
+        print "dealing page " + l
         content = get_mainContent(l, r'class="gdnl"', r'<div class="fy3">')
         girlurl = get_girlurl(content)
         for u in girlurl:
             pic_content = get_mainContent(u, r'class="xjtpks"', r'class="foont"')
             get_picurl(pic_content)
+            print "Finish page " + str(girlurl.index(u))
+        else:
+            print "Finish all1"
+    else:
+        print "Finish all2"
 
 def get_pageurl():
     for i in range(1, 8):
@@ -32,6 +40,7 @@ def get_mainContent(url, start, end):
     return main_content
 
 def get_girlurl(content):
+    girl_url = []
     domain = "http://www.tuigirl.com"
     url_start = content.find(r'/models')
     url_end = content.find('"', url_start)
@@ -60,13 +69,13 @@ def get_picurl(pic_content):
         picurl.append(purl)
     else:
         for ul in picurl:
+            #print "pic ----- " + ul
             download_pic(ul)
-        else:
-            print "finish page"
 
 def download_pic(url):
+    global n
     img = requests.get(url).content
-    open('img' + str(n)+'.jpg', 'wb').write(img)
+    open('img/' + str(n)+'.jpg', 'wb').write(img)
     n += 1
     
 
