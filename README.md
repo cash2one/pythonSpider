@@ -1,1 +1,1 @@
-这是我自己的python爬虫练习库
+this is my all python crawler practice
