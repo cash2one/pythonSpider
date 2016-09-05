@@ -96,12 +96,10 @@ def login_douban(username, password):
     }
 
     preload = {
-        'source': 'None',
-        'redir': 'https://www.douban.com/people/92549523/',
+        'source': 'index_nav',
         'form_email': username,
         'form_password': password,
-        'remember': 'on',
-        'login': u'登录'
+        'remember': 'on'
         }
     
     r = session.get(login_url)
@@ -129,7 +127,7 @@ def login_douban(username, password):
 if __name__ == '__main__':
 
     # 输入豆瓣的账号密码以登录豆瓣并获取全局session
-    session = login_douban('username', 'passowrd')
+    session = login_douban('username', 'password')
 
     # 连接数据库并获取游标
     conn = pymysql.connect(host='localhost', user='root', passwd=None, db='test', charset='utf8')
