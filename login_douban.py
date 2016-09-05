@@ -22,6 +22,11 @@ class douban_crawler(object):
             'remember': 'on',
             'login': u'登录'
             }
+        
+        r = self.session.get(login_url)
+        html = r.content
+        bsObj = BeautifulSoup(html, 'lxml')
+
 
         # get captcha and captcha id
         try:
