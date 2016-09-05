@@ -4,7 +4,7 @@ import pymysql
 
 conn = pymysql.connect(host="localhost", user="root", passwd=None, db="test", charset="utf8")
 cur = conn.cursor()
-sql = "select * from jb51_books"
+sql = "select * from jb51_books where id=1"
 cur.execute(sql)
 print(cur.fetchall())
 cur.connection.commit()
