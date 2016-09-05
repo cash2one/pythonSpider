@@ -83,6 +83,12 @@ class Db_gz_group(object):
             self.conn.rollback()
 
 def login_douban(username, password):
+    '''
+    本函数用于登录豆瓣，并返回session共其它函数使用
+    因为经测试，如果不登录，则只能查看搜索结果前10页的信息
+    登录后才可能查看更多页面
+    '''
+    
     session = requests.Session()
     login_url = "https://accounts.douban.com/login"
     headers = {
